@@ -9,9 +9,8 @@ NTFY_BASE_URL = os.environ.get("NTFY_BASE_URL")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC")
 NTFY_TOKEN = os.environ.get("NTFY_TOKEN")
 
-LISTEN_HOST = os.environ.get("LISTEN_HOST", "127.0.0.1")
-LISTEN_PORT = os.environ.get("LISTEN_PORT", 8008)
-
+LISTEN_HOST = os.environ.get("LISTEN_HOST", "0.0.0.0")
+LISTEN_PORT = int(os.environ.get("LISTEN_PORT", 8008))
 
 routes = web.RouteTableDef()
 
