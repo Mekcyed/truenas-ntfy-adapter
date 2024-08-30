@@ -1,0 +1,11 @@
+services:
+  truenas-ntfy-adapter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: truenas-ntfy-adapter
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 8008:8008
