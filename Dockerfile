@@ -14,5 +14,5 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # start the adapter
-CMD ["python", "ntfy-adapter.py"]
+CMD ["python", "-u", "ntfy-adapter.py"]
 
