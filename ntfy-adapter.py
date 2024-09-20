@@ -65,7 +65,7 @@ async def send_ntfy_message(title: str, message: str):
             break
     
     data = {
-        "topic": "NTFY_TOPIC",
+        "topic": NTFY_TOPIC,
         "message": message,
         "title": title,
         "tags": ["warning" if priority == 5 else "information_source"],
