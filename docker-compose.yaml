@@ -8,4 +8,4 @@ services:
     env_file:
       - .env
     ports:
-      - 8008:8008
+      - 8009:8009
