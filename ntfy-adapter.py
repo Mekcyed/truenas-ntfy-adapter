@@ -30,14 +30,18 @@ async def on_message(request):
             logger.error("No 'text' field in the request JSON.")
             return web.Response(status=400, text="Missing 'text' field in JSON.")
         
-        # Extract the first line as the title
+        # Get the sender's IP address
+        client_ip = request.remote
+        
+        # Extract the first line as the title and append IP
         title, _, body = message.partition('\n')
+        title = f"{title.strip()} [from: {client_ip}]"
         formatted_message = message.replace("*", "- ")
         
-        logger.info("Received message:\n%s", formatted_message)
+        logger.info("Received message from %s:\n%s", client_ip, formatted_message)
         
         # Forward the alert to ntfy with title and message
-        ntfy_resp = await send_ntfy_message(title.strip(), body.strip().replace("*", "- "))
+        ntfy_resp = await send_ntfy_message(title, body.strip().replace("*", "- "))
         return web.Response(status=ntfy_resp.status)
     
     except Exception as e:
